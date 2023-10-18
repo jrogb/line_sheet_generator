@@ -10,6 +10,9 @@ import datetime
 
 class LineSheetApp:
     def __init__(self, root):
+        root.tk.call("source", "azure.tcl")
+        root.tk.call("set_theme", "dark")
+    
         self.root = root
         self.root.title("Line Sheet Generator")
 
@@ -22,7 +25,7 @@ class LineSheetApp:
             "Advance", "Cancam", "Headland", "Jumaras", "Vectura",
             "Wavelengths", "Nexgistix", "Copperzone", "Africlan", "Other"
         ])
-
+    
         # Create an entry for Fleet Number/Store
         self.fleet_label = ttk.Label(self.frame, text="Fleet Number/Store:")
         self.fleet_entry = ttk.Entry(self.frame)
@@ -188,7 +191,7 @@ class LineSheetApp:
 
         except Exception as e:
             messagebox.showerror("Error Generating Line Sheet", f"An error occurred while generating the Line Sheet: {e}")
-
+    
 def main():
     root = tk.Tk()
     app = LineSheetApp(root)
